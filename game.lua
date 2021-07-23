@@ -79,7 +79,7 @@ function Game:draw()
 
     for i = 0, 3 do
       for j = 0, 3 do
-          love.graphics.setColor(255, 255, 255)
+          love.graphics.setColor(1,1,1)
 
           local x = grid_start_x + i * grid_spacing_x
           local y = grid_start_y + j * grid_spacing_y
@@ -108,9 +108,6 @@ function Game:draw()
 
     -- Score
     love.graphics.draw(graphic_sheet, score_divider_q, 16, 185)
-
-    -- Card back in top left
-    love.graphics.draw(graphic_sheet, card_back_q, 16, 28)
 
     -- Draw hand
     hands[current_turn]:draw(260, 8)

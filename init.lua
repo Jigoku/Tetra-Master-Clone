@@ -1,5 +1,5 @@
 function init_graphics()
-  graphic_sheet = love.graphics.newImage("graphics.png")
+  graphic_sheet = love.graphics.newImage("data/graphics.png")
   sheet_w = graphic_sheet:getWidth()
   sheet_h = graphic_sheet:getHeight()
 

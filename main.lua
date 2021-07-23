@@ -4,6 +4,7 @@ require("init")
 require("card")
 require("hand")
 require("game")
+require("sound")
 
 function love.load()
   math.randomseed(os.time())
@@ -17,15 +18,11 @@ function love.draw()
 
   Game:draw()
 
-  love.graphics.setColor(255, 255, 255)
+  love.graphics.setColor(255/255, 255/255, 255/255)
   love.graphics.pop()
 end
 
 function love.update(dt)
-    if love.keyboard.isDown("escape") then
-        love.event.quit()
-    end
-
     Game:update(dt)
 end
 
@@ -41,6 +38,11 @@ function love.keypressed(key, isrepeat)
   if key == "r" then
     init_grid()
   end
+
+  if key == "escape" then
+    love.event.quit()
+end
+
 end
 
 function get_grid_cell(x, y)

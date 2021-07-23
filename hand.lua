@@ -38,23 +38,23 @@ function Hand:draw(x, y)
     self.hovered_card = self:get_card_at(love.mouse.getX(), love.mouse.getY())
 
     for i, v in ipairs(self.cards) do
-        love.graphics.setColor(100, 100, 100, 100)
+        love.graphics.setColor(100/255, 100/255, 100/255, 100/255)
         local y = y + ((i - 1) * card_height)
 
         if not self.ai_controlled then
             if not self.selected_card then
-                love.graphics.setColor(255, 255, 255)
+                love.graphics.setColor(255/255, 255/255, 255/255)
             end
 
             if self.hovered_card then
                 if v == self.hovered_card then
-                    love.graphics.setColor(255, 255, 255, 200)
+                    love.graphics.setColor(1,1,1, 0.78)
                 end
             end
 
             if self.selected_card then
                 if v == self.selected_card then
-                    love.graphics.setColor(255, 255, 255)
+                    love.graphics.setColor(1,1,1)
                 end
             end
 
@@ -66,12 +66,17 @@ function Hand:draw(x, y)
 
             v:draw(x, y, s, card_height, card_width)
         else
-            love.graphics.setColor(255, 255, 255)
-            love.graphics.draw(graphic_sheet, card_back_q, x, y, 0, s, s)
+
         end
     end
 
-    love.graphics.setColor(255, 255, 255)
+    -- AI's card backs in top left
+    for i in ipairs(self.cards) do
+        love.graphics.setColor(1,1,1)
+        love.graphics.draw(graphic_sheet, card_back_q, 16,28*(i/2)+16)
+    end
+
+    love.graphics.setColor(1,1,1)
 end
 
 function Hand:mousepressed(x, y, button)
